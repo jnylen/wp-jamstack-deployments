@@ -23,6 +23,18 @@ if (!function_exists('jamstack_deployments_get_webhook_url')) {
     }
 }
 
+if (!function_exists('jamstack_deployments_get_webhook_authorization')) {
+    /**
+     * Return the webhook authorization
+     *
+     * @return string|null
+     */
+    function jamstack_deployments_get_webhook_authorization() {
+        $options = jamstack_deployments_get_options();
+        return isset($options['webhook_authorization']) ? $options['webhook_authorization'] : null;
+    }
+}
+
 if (!function_exists('jamstack_deployments_get_webhook_method')) {
     /**
      * Return the webhook method (get/post)

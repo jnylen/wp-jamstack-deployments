@@ -307,12 +307,18 @@ class WebhookTrigger
 
         $body = apply_filters('jamstack_deployments_webhook_body_payload', $body);
 
+        $headers = [
+            'Content-Type' => 'application/json; charset=utf-8',
+        ]
+
+        if (!empty(jamstack_deployments_get_webhook_authorization())) {
+            $headers['Authorization'] = 'Bearer ' . jamstack_deployments_get_webhook_authorization()
+        }
+
         $args = apply_filters('jamstack_deployments_webhook_request_args', [
             'blocking' => false,
             'body' => json_encode($body),
-            'headers' => [
-                'Content-Type' => 'application/json; charset=utf-8',
-            ],
+            'headers' => $headers,
         ]);
 
         $method = jamstack_deployments_get_webhook_method();

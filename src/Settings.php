@@ -34,7 +34,13 @@ class Settings
             'name' => "{$key}[webhook_url]",
             'value' => jamstack_deployments_get_webhook_url(),
             'description' => sprintf( __( 'Your Build Hook URL. This is the URL that is pinged to start building/deploying the JAMstack site. See <a href="%1s" target="_blank" rel="noopener noreferrer">Netlify docs</a> or see <a href="%2s" target="_blank" rel="noopener noreferrer">Zeit docs</a>.', 'wp-jamstack-deployments' ), 'https://docs.netlify.com/configure-builds/build-hooks/', 'https://zeit.co/docs/v2/advanced/deploy-hooks/' )
-        ]); 
+        ]);
+
+        add_settings_field('webhook_authorization', __( 'Build Hook Key', 'wp-jamstack-deployments' ), ['Crgeary\JAMstackDeployments\Field', 'url'], $key, 'general', [
+            'name' => "{$key}[webhook_authorization]",
+            'value' => jamstack_deployments_get_webhook_authorization(),
+            'description' => __( 'Your Build Hook Key. This is the Authorization Key that is used when pinged to start building/deploying the JAMstack site.', 'wp-jamstack-deployments' )
+        ]);
 
         add_settings_field('webhook_method', __( 'Hook Method', 'wp-jamstack-deployments' ), ['Crgeary\JAMstackDeployments\Field', 'select'], $key, 'general', [
             'name' => "{$key}[webhook_method]",
