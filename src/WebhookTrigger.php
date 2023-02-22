@@ -39,6 +39,7 @@ class WebhookTrigger
 
         self::fireWebhook([
             'action' => 'save_term',
+            'clear_cache' => true,
             'data' => [
                 'id' => $id,
                 'taxonomy_id' => $tax_id,
@@ -64,6 +65,7 @@ class WebhookTrigger
 
         self::fireWebhook([
             'action' => 'delete_term',
+            'clear_cache' => true,
             'data' => [
                 'id' => $id,
                 'taxonomy_id' => $tax_id,
@@ -87,6 +89,7 @@ class WebhookTrigger
         
         self::fireWebhook([
             'action' => 'edit_term',
+            'clear_cache' => true,
             'data' => [
                 'id' => $id,
                 'taxonomy_id' => $tax_id,
@@ -225,6 +228,7 @@ class WebhookTrigger
 
         self::fireWebhook([
             'action' => 'manual',
+            'clear_cache' => true,
             'data' => [],
         ]);
 
@@ -262,6 +266,7 @@ class WebhookTrigger
 
         self::fireWebhook([
             'action' => 'post_status_transition',
+            'clear_cache' => true,
             'data' => [
                 'id' => $id,
                 'status' => $new,
@@ -280,6 +285,7 @@ class WebhookTrigger
 
         self::fireWebhook([
             'action' => 'manual',
+            'clear_cache' => true,
             'data' => [],
         ]);
 
