@@ -24,7 +24,7 @@ class Field
      * @param array $args
      * @return void
      */
-    public static function string($args = [])
+    public static function text($args = [])
     {
         ?><div>
             <input type="text" class="regular-text" name="<?= esc_attr($args['name']); ?>" value="<?= $args['value']; ?>">
